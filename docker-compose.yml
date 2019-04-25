@@ -1,0 +1,22 @@
+version: '3.4'
+
+services:
+  service.registry.device:
+    build:
+      dockerfile: ./service.registry.device/dev.dockerfile
+      context: .
+    volumes:
+      - ./service.registry.device:/usr/src/app
+      - ./libraries/python:/root/.local/lib/python3.5/site-packages
+    ports:
+      - 7001:80
+    environment:
+      APP_CONFIG_FILE: /usr/src/app/config/development.py
+    env_file:
+      - ./.env
+    depends_on:
+      - redis
+  redis:
+    image: redis
+    ports:
+      - 6379:6379
