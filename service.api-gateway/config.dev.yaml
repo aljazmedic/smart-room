@@ -10,21 +10,3 @@ apis:
     prefix: service.registry.device
     upstream_url: http://service.registry.device
     allow_cross_origin: true
-
-  service.controller.dmx:
-    name: DMX Controller
-    prefix: service.controller.dmx
-    upstream_url: http://service.controller.dmx
-    allow_cross_origin: true
-
-  service.controller.hue:
-    name: Hue Controller
-    prefix: service.controller.hue
-    upstream_url: http://service.controller.hue
-    allow_cross_origin: true
-
-  service.controller.plug:
-    name: TP-Link Plug Controller
-    prefix: service.controller.plug
-    upstream_url: http://service.controller.plug
-    allow_cross_origin: true
