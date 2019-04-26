@@ -24,5 +24,5 @@ ENV FLASK_APP="device_registry"
 ENV FLASK_RUN_HOST="0.0.0.0"
 ENV FLASK_RUN_PORT="80"
 
-#ENTRYPOINT ["python"]
-CMD ["flask", "run"]
+CMD ["python", "./run.py"]
+#CMD ["flask", "run"]

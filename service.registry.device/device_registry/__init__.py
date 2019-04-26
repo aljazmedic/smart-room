@@ -7,7 +7,6 @@ from redis import Redis
 from flask import current_app, g
 from flask.cli import with_appcontext
 
-
 #Create instance
 app = Flask(__name__)
 api = Api(app)
@@ -28,7 +27,6 @@ def teardown_db(exception=None):
 
 @app.route("/")
 def index():
-	print(g.get('db', None), g.get('_database', None))
 	"""Documentation"""
 	with open(os.path.dirname(app.root_path) + '/README.md', 'r') as markdown_file:
 		content = markdown_file.read()
