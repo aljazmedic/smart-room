@@ -3,17 +3,13 @@ import markdown
 from flask_restful import Resource, Api, reqparse
 import os, shelve
 from flask import Flask, g, Markup, render_template, request, current_app
-from redis import Redis
 from flask.cli import with_appcontext
 
 from bootstrap import Service
 
-
 service = Service()
 #Create instance
-app = Flask(__name__)
-api = Api(app)
-redis = Redis(host='redis', port=6379)
+app = service.app
 
 def get_db():
 	db = getattr(g, '_database', None)
@@ -223,10 +219,10 @@ class RoomList(Resource):
 
 
 
-api.add_resource(DeviceList, '/devices')
-api.add_resource(Device, '/device/<string:identifier>')
-api.add_resource(RoomList, '/devices')
-api.add_resource(Room, '/device/<string:identifier>')
+service.api.add_resource(DeviceList, '/devices')
+service.api.add_resource(Device, '/device/<string:identifier>')
+service.api.add_resource(RoomList, '/devices')
+service.api.add_resource(Room, '/device/<string:identifier>')
 
 
 # Database access
