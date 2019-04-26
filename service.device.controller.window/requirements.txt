@@ -1,0 +1,6 @@
+requests
+redis
+Flask==1.0.2
+flask_restful==0.3.7
+markdown==2.6.11
+werkzeug==0.14.1

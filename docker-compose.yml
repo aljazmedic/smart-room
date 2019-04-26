@@ -1,6 +1,7 @@
 version: '3.4'
 
 services:
+
   service.registry.device:
     build:
       dockerfile: ./service.registry.device/dev.dockerfile
@@ -16,7 +17,45 @@ services:
       - ./.env
     depends_on:
       - redis
+
+  service.device.controller.window:
+    build:
+      dockerfile: ./service.device.controller.window/dev.dockerfile
+      context: .
+    volumes:
+      - ./service.device.controller.window:/usr/src/app
+      - ./libraries/python:/root/.local/lib/python3.5/site-packages
+    ports:
+      - 7100:80
+    environment:
+      APP_CONFIG_FILE: /usr/src/app/config/development.py
+    env_file:
+      - ./.env
+    depends_on:
+      - redis
+
   redis:
-    image: redis
+    image: redis:latest
     ports:
       - 6379:6379
+
+  service.config:
+    build:
+      dockerfile: ./service.config/dev.dockerfile
+      context: .
+    image: smart-room-service-config
+    volumes:
+      - .:/go/src/github.com/AyyItsAljo/smart-room
+      - ./service.config/data/dev.yaml:/data/config.yaml
+      - /go/src/github.com/AyyItsAljo/smart-room/vendor
+    ports:
+      - 7002:80
+    env_file:
+      - ./.env
+
+  service.api-gateway:
+    image: jakewright/drawbridge
+    volumes:
+      - ./service.api-gateway/config.dev.yaml:/config/config.yaml
+    ports:
+      - 7005:80
