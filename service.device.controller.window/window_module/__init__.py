@@ -34,7 +34,7 @@ def index():
 
 class ModuleResource(Resource):
 	def get(self, identifier):
-		shelf = get_db()
+		#shelf = get_db()
 		device = requests.get(f"http://192.168.99.100:7001/device/{identifier}").json()
 		print(device["data"]["controller_gateway"])
 		gateway = device["data"]["controller_gateway"]

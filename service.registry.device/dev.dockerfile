@@ -14,7 +14,7 @@ COPY ./service.registry.device/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the application files
-COPY . .
+COPY ./service.registry.device .
 
 ARG FLASK_ENV="development"
 ENV FLASK_ENV="${FLASK_ENV}" \

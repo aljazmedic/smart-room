@@ -79,9 +79,9 @@ func TestDecodeComplexParamNames(t *testing.T) {
 	r = mux.SetURLVars(r, map[string]string{"favorite_number": "3"})
 
 	var v struct {
-		AnimalColor    string `json:"animal_color"`
-		HouseName      string `json:"house_name"`
-		FavoriteNumber int    `json:"favorite_number"`
+		AnimalColor	string `json:"animal_color"`
+		HouseName	  string `json:"house_name"`
+		FavoriteNumber int	`json:"favorite_number"`
 	}
 
 	err = Decode(r, &v)

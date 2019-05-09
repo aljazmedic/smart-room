@@ -10,42 +10,42 @@ class Device {
    * @param {array} config.stateProviders Array of state provider service names
    */
   constructor(config) {
-    this.identifier = config.identifier;
-    this.name = config.name;
-    this.type = config.type;
-    this.controllerName = config.controllerName;
-    this.attributes = config.attributes || {};
-    this.dependsOn = config.dependsOn || [];
-    this.stateProviders = config.stateProviders || [];
+	this.identifier = config.identifier;
+	this.name = config.name;
+	this.type = config.type;
+	this.controllerName = config.controllerName;
+	this.attributes = config.attributes || {};
+	this.dependsOn = config.dependsOn || [];
+	this.stateProviders = config.stateProviders || [];
 
-    this.state = {};
+	this.state = {};
   }
 
   getCommands() {
-    return {};
+	return {};
   }
 
   getStateProviderUrls() {
-    return this.stateProviders.map(ctrl => `${ctrl}/device/${this.identifier}`);
+	return this.stateProviders.map(ctrl => `${ctrl}/device/${this.identifier}`);
   }
 
   applyState(state) {
-    for (const property in this.state) {
-      if (property in state) {
-        this.state[property].value = state[property];
-      }
-    }
+	for (const property in this.state) {
+	  if (property in state) {
+		this.state[property].value = state[property];
+	  }
+	}
   }
 
   toJSON() {
-    return {
-      identifier: this.identifier,
-      name: this.name,
-      type: this.type,
-      controllerName: this.controllerName,
-      state: this.state,
-      commands: this.getCommands()
-    };
+	return {
+	  identifier: this.identifier,
+	  name: this.name,
+	  type: this.type,
+	  controllerName: this.controllerName,
+	  state: this.state,
+	  commands: this.getCommands()
+	};
   }
 }
 

@@ -8,8 +8,8 @@ import (
 
 // Error is a custom error type that implements Go's error interface
 type Error struct {
-	Code     string            `json:"code"`
-	Message  string            `json:"message"`
+	Code	 string			`json:"code"`
+	Message  string			`json:"message"`
 	Metadata map[string]string `json:"metadata"`
 }
 
@@ -61,13 +61,13 @@ func (e *Error) Matches(match string) bool {
 // Generic error codes. Each of these has their own constructor for convenience.
 // You can use any string as a code, just use the `New` method.
 const (
-	ErrBadRequest         = "bad_request"
-	ErrForbidden          = "forbidden"
-	ErrInternalService    = "internal_service"
-	ErrNotFound           = "not_found"
+	ErrBadRequest		 = "bad_request"
+	ErrForbidden		  = "forbidden"
+	ErrInternalService	= "internal_service"
+	ErrNotFound		   = "not_found"
 	ErrPreconditionFailed = "precondition_failed"
-	ErrTimeout            = "timeout"
-	ErrUnauthorized       = "unauthorized"
+	ErrTimeout			= "timeout"
+	ErrUnauthorized	   = "unauthorized"
 )
 
 // InternalService creates a new error to represent an internal service error

@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/AyyItsAljo/smart-room/libraries/go/errors"
+	"github.com/aljazmedic/smart-room/libraries/go/errors"
 
 	"github.com/gorilla/mux"
 	"github.com/mitchellh/mapstructure"
@@ -17,9 +17,9 @@ import (
 func Decode(r *http.Request, v interface{}) error {
 	// This does a load of reflection to unmarshal a map into the type of v
 	decoder, err := mapstructure.NewDecoder(&mapstructure.DecoderConfig{
-		DecodeHook:       mapstructure.StringToTimeHookFunc(time.RFC3339),
+		DecodeHook:	   mapstructure.StringToTimeHookFunc(time.RFC3339),
 		WeaklyTypedInput: true,
-		Result:           v,
+		Result:		   v,
 
 		// Override the TagName to match the one used by the encoding/json package
 		// so users of this function only have to define a single tag on struct fields

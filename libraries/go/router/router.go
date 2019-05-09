@@ -6,22 +6,22 @@ import (
 	"net/http"
 	"sync/atomic"
 
-	"github.com/AyyItsAljo/smart-room/libraries/go/config"
-	"github.com/AyyItsAljo/smart-room/libraries/go/slog"
+	"github.com/aljazmedic/smart-room/libraries/go/config"
+	"github.com/aljazmedic/smart-room/libraries/go/slog"
 
 	"github.com/jakewright/muxinator"
 )
 
 // Router is a wrapper around muxinator.Router that conforms to the bootstrap.Process interface
 type Router struct {
-	r               muxinator.Router
+	r			   muxinator.Router
 	shutdownInvoked *int32
 }
 
 // New returns a new router
 func New() *Router {
 	return &Router{
-		r:               muxinator.NewRouter(),
+		r:			   muxinator.NewRouter(),
 		shutdownInvoked: new(int32),
 	}
 }

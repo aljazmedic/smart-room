@@ -2,7 +2,7 @@ FROM python:3.6
 
 # Upgrade pip and install YAPF
 RUN pip install --upgrade pip && \
-    pip install yapf
+	pip install yapf
 
 # Add the libraries
 COPY ./libraries/python /root/.local/lib/python3.5/site-packages/
@@ -18,7 +18,7 @@ COPY . .
 
 ARG FLASK_ENV="development"
 ENV FLASK_ENV="${FLASK_ENV}" \
-    PYTHONUNBUFFERED="true"
+	PYTHONUNBUFFERED="true"
 
 ENV FLASK_APP="window_module"
 ENV FLASK_RUN_HOST="0.0.0.0"

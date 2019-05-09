@@ -7,12 +7,12 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/AyyItsAljo/smart-room/libraries/go/errors"
+	"github.com/aljazmedic/smart-room/libraries/go/errors"
 )
 
 type response struct {
-	Message string      `json:"message,omitempty"`
-	Data    interface{} `json:"data,omitempty"`
+	Message string	  `json:"message,omitempty"`
+	Data	interface{} `json:"data,omitempty"`
 }
 
 func Write(w http.ResponseWriter, buf bytes.Buffer) {

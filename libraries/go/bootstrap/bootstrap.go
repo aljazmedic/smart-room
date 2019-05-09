@@ -9,10 +9,10 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/AyyItsAljo/smart-room/libraries/go/api"
-	"github.com/AyyItsAljo/smart-room/libraries/go/config"
-	"github.com/AyyItsAljo/smart-room/libraries/go/firehose"
-	"github.com/AyyItsAljo/smart-room/libraries/go/slog"
+	"github.com/aljazmedic/smart-room/libraries/go/api"
+	"github.com/aljazmedic/smart-room/libraries/go/config"
+	"github.com/aljazmedic/smart-room/libraries/go/firehose"
+	"github.com/aljazmedic/smart-room/libraries/go/slog"
 
 	"github.com/go-redis/redis"
 )
@@ -57,9 +57,9 @@ func Init(serviceName string) error {
 		addr := fmt.Sprintf("%s:%d", host, port)
 		slog.Info("Connecting to Redis at address %s", addr)
 		firehose.DefaultPublisher = firehose.New(redis.NewClient(&redis.Options{
-			Addr:     addr,
+			Addr:	 addr,
 			Password: "",
-			DB:       0,
+			DB:	   0,
 		}))
 	}
 

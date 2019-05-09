@@ -11,18 +11,18 @@ let handlers = {};
 
 const newClient = () => {
   if (!config.has("redis.host")) {
-    throw new Error("No redis host defined in config");
+	throw new Error("No redis host defined in config");
   }
 
   const client = redis.createClient({
-    host: config.get("redis.host"),
-    port: config.get("redis.port")
+	host: config.get("redis.host"),
+	port: config.get("redis.port")
   });
 
   client.on("ready", () => console.log("Redis connection is ready"));
   client.on("connect", () => console.log("Redis connected"));
   client.on("reconnecting", o =>
-    console.log(`Reconnecting to Redis [attempt ${o.attempt}]...`)
+	console.log(`Reconnecting to Redis [attempt ${o.attempt}]...`)
   );
   client.on("error", err => console.error(`Redis error: ${err}`));
   client.on("end", () => console.log(`Redis connection closed`));
@@ -38,15 +38,15 @@ const getPubClient = () => {
 
 const getSubClient = () => {
   if (subClient === undefined) {
-    subClient = newClient();
+	subClient = newClient();
 
-    // Every time we get a message on a channel that matches an active
-    // pattern subscription, call all of the handlers for that pattern.
-    subClient.on("pmessage", (pattern, channel, message) => {
-      for (const handler of handlers[pattern]) {
-        handler(channel, message);
-      }
-    });
+	// Every time we get a message on a channel that matches an active
+	// pattern subscription, call all of the handlers for that pattern.
+	subClient.on("pmessage", (pattern, channel, message) => {
+	  for (const handler of handlers[pattern]) {
+		handler(channel, message);
+	  }
+	});
   }
 
   return subClient;
@@ -60,9 +60,9 @@ const subscribe = (pattern, handler) => {
   getSubClient().psubscribe(pattern);
 
   if (pattern in handlers) {
-    handlers[pattern].push(handler);
+	handlers[pattern].push(handler);
   } else {
-    handlers[pattern] = [handler];
+	handlers[pattern] = [handler];
   }
 };
 

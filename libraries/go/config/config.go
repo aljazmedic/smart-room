@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/AyyItsAljo/smart-room/libraries/go/slog"
+	"github.com/aljazmedic/smart-room/libraries/go/slog"
 )
 
 type Provider interface {

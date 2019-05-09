@@ -14,7 +14,7 @@ const req = require("../http");
 const updateDependencies = (state, dependencies) => {
   // Filter the dependencies such that only ones that need updating are left
   dependencies = dependencies.filter(
-    d => state[d.localProperty] === d.localValue
+	d => state[d.localProperty] === d.localValue
   );
 
   // Execute all requests in parallel
@@ -25,8 +25,8 @@ const updateDependencies = (state, dependencies) => {
 const updateDependency = async dependency => {
   const id = dependency.remoteDeviceIdentifier;
   return req.get(`service.registry.device/device/${id}`).then(header => {
-    const data = { [dependency.remoteProperty]: dependency.remoteValue };
-    return req.patch(`${header.controllerName}/device/${id}`, data);
+	const data = { [dependency.remoteProperty]: dependency.remoteValue };
+	return req.patch(`${header.controllerName}/device/${id}`, data);
   });
 };
 

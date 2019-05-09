@@ -68,7 +68,7 @@ func New(base string, envelope string) (Requester, error) {
 // Request holds the information needed to make an HTTP request
 type Request struct {
 	Method string
-	URL    string
+	URL	string
 	Body   map[string]interface{}
 }
 
